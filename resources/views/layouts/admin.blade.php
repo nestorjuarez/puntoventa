@@ -6,23 +6,23 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Melody Admin</title>
+  @yield('title')
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+
   <!-- plugins:css -->
-  <link rel="stylesheet" href="vendors/iconfonts/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
-  <link rel="stylesheet" href="vendors/css/vendor.bundle.addons.css">
+  {!! Html::style('vendors/iconfonts/font-awesome/css/all.min.css') !!}
+  {!! Html::style('vendors/css/vendor.bundle.base.css') !!}
+  {!! Html::style('vendors/css/vendor.bundle.addons.css')!!}
+ 
+  {!! Html::style('../../css/style.css') !!}
   <!-- endinject -->
-  <!-- plugin css for this page -->
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
-  <link rel="stylesheet" href="css/style.css">
-  <!-- endinject -->
+  @yield('stilos')
   <link rel="shortcut icon" href="http://www.urbanui.com/" />
 </head>
 <body>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
-    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row default-layout-navbar">
+    {{-- <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row default-layout-navbar">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
         <a class="navbar-brand brand-logo" href="index-2.html"><img src="images/logo.svg" alt="logo"/></a>
         <a class="navbar-brand brand-logo-mini" href="index-2.html"><img src="images/logo-mini.svg" alt="logo"/></a>
@@ -209,7 +209,8 @@
           <span class="fas fa-bars"></span>
         </button>
       </div>
-    </nav>
+    </nav> --}}
+    @include('layouts._nav')
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_settings-panel.html -->
@@ -383,7 +384,7 @@
       </div>
       <!-- partial -->
       <!-- partial:partials/_sidebar.html -->
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+      {{-- <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
@@ -669,11 +670,13 @@
             </a>
           </li>
         </ul>
-      </nav>
+      </nav> --}}
+      @include('layouts.sidebar')
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-          <div class="page-header">
+          @yield('content')
+          {{-- <div class="page-header">
             <h3 class="page-title">
               Dashboard
             </h3>
@@ -1277,7 +1280,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> --}}
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
@@ -1296,21 +1299,29 @@
   <!-- container-scroller -->
 
   <!-- plugins:js -->
-  <script src="vendors/js/vendor.bundle.base.js"></script>
-  <script src="vendors/js/vendor.bundle.addons.js"></script>
+  
+  {{-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> --}}
+  <script src="https://code.jquery.com/jquery-3.5.1.js" defer></script>
+  <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js" defer></script>
+  {!! Html::script('vendors/js/vendor.bundle.base.js') !!}
+  {!! Html::script('vendors/js/vendor.bundle.addons.js') !!}
   <!-- endinject -->
   <!-- Plugin js for this page-->
   <!-- End plugin js for this page-->
   <!-- inject:js -->
-  <script src="js/off-canvas.js"></script>
-  <script src="js/hoverable-collapse.js"></script>
-  <script src="js/misc.js"></script>
-  <script src="js/settings.js"></script>
-  <script src="js/todolist.js"></script>
+  
+
+  {!! Html::script('js/off-canvas.js') !!}
+  {!! Html::script('js/hoverable-collapse.js') !!}
+  {!! Html::script('js/misc.js') !!}
+  {!! Html::script('js/settings.js') !!}
+  {!! Html::script('js/todolist.js') !!}
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="js/dashboard.js"></script>
+  {!! Html::script('js/dashboard.js') !!}
+
   <!-- End custom js for this page-->
+  @yield('scripts')
 </body>
 
 

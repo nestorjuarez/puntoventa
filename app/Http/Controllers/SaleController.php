@@ -24,7 +24,7 @@ class SaleController extends Controller
    
     public function store(StoreRequest $request)
     {
-        $sale = Purchase:create($request->validated());
+        $sale = Sale::create($request->validated());
 
         foreach ($request->product_id as $key => $produ)
         {
@@ -36,13 +36,13 @@ class SaleController extends Controller
         }
 
         $sale->saleDetaill()->createMany($result);
-        return redirect()->route('sales.index')>with('status','La compra se cargo con exito');
+        return redirect()->route('sales.index')->with('status','La compra se cargo con exito');
     }
 
    
-    public function show(Purchase $purchase)
+    public function show(Sale $sale)
     {
-        return view('admin.sales.show',['purchase' => $purchase->with('user','client','saleDetaill')->get()]);
+        return view('admin.sales.show',['sale' => $sale]);
     }
 
     

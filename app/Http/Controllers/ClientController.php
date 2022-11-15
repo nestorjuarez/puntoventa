@@ -35,20 +35,20 @@ class ClientController extends Controller
     }
 
    
-    public function edit(Client $client))
+    public function edit(Client $client)
     {
         return view('admin.clients.edit',['client' => $client]);
     }
 
    
-    public function update(UpdateRequest $request, Client $client))
+    public function update(UpdateRequest $request, Client $client)
     {
         $clients->update($request->validated());
         return redirect()->route('clients.index')->with('status','El cliente se actualizo correctamente');
     }
 
    
-    public function destroy(Client $client))
+    public function destroy(Client $client)
     {
         $client->delete();
         return redirect()->route('clients.index')->with('status','El cliente se elimino correctamente');

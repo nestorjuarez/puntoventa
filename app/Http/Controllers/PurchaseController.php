@@ -38,7 +38,7 @@ class PurchaseController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        $purchase = Purchase:create($request->validated());
+        $purchase = Purchase::create($request->validated());
 
         foreach ($request->product_id as $key => $produ)
         {
@@ -49,7 +49,7 @@ class PurchaseController extends Controller
         }
 
         $purchase->purchaseDetail()->createMany($result);
-        return redirect()->route('purchases.index')>with('status','La compra se cargo con exito');
+        return redirect()->route('purchases.index')->with('status','La compra se cargo con exito');
     }
 
     /**

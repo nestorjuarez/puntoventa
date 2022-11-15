@@ -1,8 +1,12 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SaleController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProviderController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PurchaseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +24,16 @@ Route::get('/', function () {
 });
 
 
-Route::resource('/categories','CategoryController');
-Route::resource('/providers','ProviderController');
-Route::resource('/products','ProductController');
+Route::resource('categories','CategoryController');
+Route::resource('providers','ProviderController');
+Route::resource('products','ProductController');
+Route::resource('cllients','ClientController');
+Route::resource('compras','PurchaseController');
+Route::resource('compras_detalle','PurchaseDetailController');
+Route::resource('ventas','SaleController');
+Route::resource('ventas_detalle','SaleDetailController');
 
+
+Route::get('/prueba',function(){
+   return view('prueba2');
+});
